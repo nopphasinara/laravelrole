@@ -2,7 +2,9 @@
 
 namespace App;
 
-class Permission extends \Spatie\Permission\Models\Permission
+use \Spatie\Permission\Models\Permission;
+
+class Permission extends Permission
 {
     public static function defaultPermissions()
     {
