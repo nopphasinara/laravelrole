@@ -50,17 +50,23 @@
     @forelse ($roles as $role)
         {!! Form::model($role, ['method' => 'PUT', 'route' => ['roles.update',  $role->id ], 'class' => 'm-b']) !!}
 
-        @if($role->name === 'Admin')
+        @if($role->name === 'Admin' || $role->name === 'User')
             @include('shared._permissions', [
+                          'role_name' => $role->name,
                           'title' => $role->name .' Permissions',
-                          'options' => ['disabled'] ])
+                          // 'model' => $role,
+                          'options' => ['disabled'],
+                        ])
         @else
             @include('shared._permissions', [
+                          'role_name' => $role->name,
                           'title' => $role->name .' Permissions',
-                          'model' => $role ])
-            @can('edit_roles')
+                          'model' => $role,
+                          // 'options' => ['disabled'],
+                        ])
+            {{-- @can('edit_roles')
                 {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-            @endcan
+            @endcan --}}
         @endif
 
         {!! Form::close() !!}

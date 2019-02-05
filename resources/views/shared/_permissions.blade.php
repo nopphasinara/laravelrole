@@ -31,6 +31,17 @@
                     </div>
                 @endforeach
             </div>
+            @if ($role_name === 'Admin' || $role_name === 'User')
+
+            @else
+              @can('edit_roles')
+                <div class="row">
+                  <div class="col-12 col-md-none">
+                    {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+                  </div>
+                </div>
+              @endcan
+            @endif
         </div>
     </div>
 </div>

@@ -2,9 +2,9 @@
 
 namespace App;
 
-use \Spatie\Permission\Models\Permission;
+use \Spatie\Permission\Models\Permission as BasePermission;
 
-class Permission extends Permission
+class Permission extends BasePermission
 {
     public static function defaultPermissions()
     {
@@ -23,6 +23,11 @@ class Permission extends Permission
             'add_posts',
             'edit_posts',
             'delete_posts',
+
+            'view_agents',
+            'add_agents',
+            'edit_agents',
+            'delete_agents',
         ];
     }
 }
